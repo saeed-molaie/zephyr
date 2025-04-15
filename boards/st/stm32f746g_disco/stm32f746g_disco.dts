@@ -167,7 +167,6 @@ zephyr_udc0: &usbotg_hs {
 			&usb_otg_hs_ulpi_nxt_ph4>;
 	pinctrl-names = "default";
 	maximum-speed = "high-speed";
-	clocks = <&rcc STM32_CLOCK(AHB1, 30U)>;
 	phys = <&otghs_ulpi_phy>;
 	status = "okay";
 };
