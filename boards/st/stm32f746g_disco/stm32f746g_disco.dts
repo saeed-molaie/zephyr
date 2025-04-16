@@ -25,7 +25,7 @@
 		zephyr,flash-controller = &n25q128a1;
 		zephyr,display = &ltdc;
 		zephyr,touch = &ft5336;
-		/*zephyr,udc = &usbotg_hs;*/
+		zephyr,udc = &usbotg_hs;
 	};
 
 	otghs_ulpi_phy: otghs_ulpis_phy {
@@ -145,14 +145,13 @@
 	status = "okay";
 };
 
-/*
 zephyr_udc0: &usbotg_fs {
 	pinctrl-0 = <&usb_otg_fs_dm_pa11 &usb_otg_fs_dp_pa12>;
 	pinctrl-names = "default";
 	status = "disabled";
-};*/
+};
 
-zephyr_udc0: &usbotg_hs {
+zephyr_udc1: &usbotg_hs {
 	pinctrl-0 = <&usb_otg_hs_ulpi_ck_pa5
 			&usb_otg_hs_ulpi_d0_pa3
 			&usb_otg_hs_ulpi_d1_pb0
