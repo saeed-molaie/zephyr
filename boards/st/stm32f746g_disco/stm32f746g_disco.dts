@@ -162,7 +162,7 @@ zephyr_udc1: &usbotg_hs {
 			&usb_otg_hs_ulpi_d6_pb13
 			&usb_otg_hs_ulpi_d7_pb5
 			&usb_otg_hs_ulpi_stp_pc0
-			&usb_otg_hs_ulpi_dir_pi11
+			&usb_otg_hs_ulpi_dir_pc2
 			&usb_otg_hs_ulpi_nxt_ph4>;
 	pinctrl-names = "default";
 	maximum-speed = "high-speed";

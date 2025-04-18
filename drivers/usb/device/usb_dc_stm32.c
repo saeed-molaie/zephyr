@@ -446,8 +446,9 @@ static int usb_dc_stm32_init(void)
 	int ret;
 	unsigned int i;
 
-	usb_dc_stm32_state.pcd.Init.speed = DT_INST_STRING_UPPER_TOKEN(0, maximum_speed);
-#if defined(USB) || defined(USB_DRD_FS)
+	//usb_dc_stm32_state.pcd.Init.speed = DT_INST_STRING_UPPER_TOKEN(0, maximum_speed);
+	usb_dc_stm32_state.pcd.Init.speed = USB_OTG_SPEED_HIGH;
+	#if defined(USB) || defined(USB_DRD_FS)
 #ifdef USB
 	usb_dc_stm32_state.pcd.Instance = USB;
 #else
@@ -552,14 +553,14 @@ static int usb_dc_stm32_init(void)
 
 	/* TODO: make this dynamic (depending usage) */
 	HAL_PCDEx_SetRxFiFo(&usb_dc_stm32_state.pcd, RX_FIFO_EP_WORDS);
-	for (i = 0U; i < USB_NUM_BIDIR_ENDPOINTS; i++) {
+	for (i = 0U; i < 2; i++) {
 		if (i == 0) {
 			/* first endpoint need only 64 byte for EP_TYPE_CTRL */
 			HAL_PCDEx_SetTxFiFo(&usb_dc_stm32_state.pcd, i,
 					TX_FIFO_EP_0_WORDS);
 		} else {
 			HAL_PCDEx_SetTxFiFo(&usb_dc_stm32_state.pcd, i,
-					TX_FIFO_EP_WORDS);
+					128);
 		}
 		k_sem_init(&usb_dc_stm32_state.in_ep_state[i].write_sem, 1, 1);
 	}
