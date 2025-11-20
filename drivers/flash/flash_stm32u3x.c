@@ -252,9 +252,9 @@ void flash_stm32_page_layout(const struct device *dev,
 
 	if (stm32_flash_layout[0].pages_count == 0) {
 		if (stm32_flash_has_2_banks(dev)) {
-			stm32_flash_layout[0].pages_count = FLASH_PAGE_NB * 2;
-		} else {
 			stm32_flash_layout[0].pages_count = FLASH_PAGE_NB;
+		} else {
+			stm32_flash_layout[0].pages_count = FLASH_PAGE_NB * 2;
 		}
 		stm32_flash_layout[0].pages_size = FLASH_PAGE_SIZE;
 	}
